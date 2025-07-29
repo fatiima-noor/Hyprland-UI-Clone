@@ -5,10 +5,11 @@ import FeaturesSlice from './components/LandingPage/FeaturesSlice';
 import PluginsSlice from './components/LandingPage/PluginsSlice';
 import InstallSlice from './components/LandingPage/InstallSlice';
 import NewsSlice from './components/LandingPage/NewsSlice';
+import CommunitySlice from './components/LandingPage/CommunitySlice';
 import Footer from './components/Global/Footer';
 import { getHeroBackgroundTiles } from './utils/heroBackgroundData';
 
-// Mock news data (updated with slug and date for NewsThumb)
+// Mock news data
 const news = [
   { id: 1, title: 'News 1', content: 'Placeholder news content', slug: 'news-1', date: '2025-07-01' },
   { id: 2, title: 'News 2', content: 'Placeholder news content', slug: 'news-2', date: '2025-07-15' },
@@ -29,7 +30,7 @@ function App() {
             <FeaturesSlice />
             <PluginsSlice />
             <section>HallOfFameSlice Placeholder</section>
-            <section>Community Placeholder</section>
+            <CommunitySlice />
             <NewsSlice news={news} />
             <InstallSlice />
           </div>

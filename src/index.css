@@ -334,25 +334,83 @@
   .links_ a {
     @apply font-medium hover:text-white hover:underline;
   }
-}
 
-@keyframes pop {
-  0% { scale: 0.98; }
-  40% { scale: 1.02; }
-  100% { scale: 1; }
-}
+  /* Fixed Discord icon styles - removed background */
+  .discord {
+    width: 9rem;
+    height: 9rem;
+    background: transparent !important; /* Force transparent background */
+    transition:
+      rotate 500ms cubic-bezier(0.5, 0, 0.5, 1),
+      scale 420ms cubic-bezier(0.5, 0.1, 0, 1),
+      filter 840ms;
+    transition-delay: 240ms, 180ms, 20ms;
+    transform: translateY(-25%);
+    filter: drop-shadow(0px 0px 0px cyan) drop-shadow(0px 0px 0px blue);
+    color: white; /* Keep original white color */
+  }
 
-@keyframes x {
-  0%, 16.667%, 100% { opacity: 1; }
-  33%, 83.333% { opacity: 0; }
-}
+  .discord svg,
+  .discord * {
+    background: transparent !important; /* Ensure all child elements have transparent background */
+  }
 
-@keyframes y {
-  0%, 16.667%, 66.667%, 100% { opacity: 0; }
-  33.333%, 50% { opacity: 1; }
-}
+  .discord:hover,
+  .group:hover .discord {
+    transform: scale(1.2) rotate(360deg);
+    filter: drop-shadow(4px 4px 14px rgba(15, 255, 239, 0.478)) drop-shadow(-4px -4px 12px purple);
+    animation: bounce 0.7s infinite 180ms both;
+    background: transparent !important; /* Keep transparent on hover */
+  }
 
-@keyframes z {
-  0%, 50%, 100% { opacity: 0; }
-  66.667%, 83.333% { opacity: 1; }
+  .discord:active {
+    transform: scale(1);
+    transition: scale 80ms;
+    background: transparent !important; /* Keep transparent on active */
+  }
+
+  .quote {
+    @apply pointer-events-none absolute -top-6 left-1/2 min-w-max -translate-x-1/2 select-none rounded bg-slate-800/50 px-2 py-1 text-sm font-medium tracking-wide opacity-0 transition-opacity duration-150 group-hover:opacity-100;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-25%) scale(1.2);
+    }
+    50% {
+      transform: translateY(-20%) scale(1.2);
+    }
+  }
+
+  @keyframes pop {
+    0% { scale: 0.98; }
+    40% { scale: 1.02; }
+    100% { scale: 1; }
+  }
+
+  @keyframes x {
+    0%, 16.667%, 100% { opacity: 1; }
+    33%, 83.333% { opacity: 0; }
+  }
+
+  @keyframes y {
+    0%, 16.667%, 66.667%, 100% { opacity: 0; }
+    33.333%, 50% { opacity: 1; }
+  }
+
+  @keyframes z {
+    0%, 50%, 100% { opacity: 0; }
+    66.667%, 83.333% { opacity: 1; }
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: scale(0.72);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
