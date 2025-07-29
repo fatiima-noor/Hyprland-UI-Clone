@@ -6,6 +6,7 @@ import PluginsSlice from './components/LandingPage/PluginsSlice';
 import InstallSlice from './components/LandingPage/InstallSlice';
 import NewsSlice from './components/LandingPage/NewsSlice';
 import CommunitySlice from './components/LandingPage/CommunitySlice';
+import HallOfFameSlice from './components/LandingPage/HallOfFameSlice';
 import Footer from './components/Global/Footer';
 import { getHeroBackgroundTiles } from './utils/heroBackgroundData';
 
@@ -29,7 +30,7 @@ function App() {
             <PreviewRiceSlice className="mb-12" />
             <FeaturesSlice />
             <PluginsSlice />
-            <section>HallOfFameSlice Placeholder</section>
+            <HallOfFameSlice />
             <CommunitySlice />
             <NewsSlice news={news} />
             <InstallSlice />

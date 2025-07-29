@@ -116,10 +116,11 @@
     height: var(--length);
     min-height: var(--length);
     max-height: var(--length);
-    contain: layout style content;
+    contain: layout style;
   }
 
-  .columns .column:nth-child(2), .columns .column:nth-child(3) {
+  .columns .column:nth-child(2), 
+  .columns .column:nth-child(3) {
     mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.1) 5%, rgba(0, 0, 0, 0.5) 20%, black 40%);
   }
 
@@ -130,7 +131,7 @@
     width: 100%;
     gap: var(--workspace-gap);
     z-index: -50;
-    contain: layout style content;
+    contain: layout style;
   }
 
   .workspace {
@@ -139,7 +140,7 @@
     min-height: var(--workspace-height);
     max-height: var(--workspace-height);
     width: 100%;
-    contain: layout style content;
+    contain: layout style;
   }
 
   .tiles {
@@ -148,7 +149,7 @@
     gap: 8px;
     flex-grow: 1;
     width: 100%;
-    contain: layout style content;
+    contain: layout style;
   }
 
   .tile {
@@ -332,14 +333,19 @@
   }
 
   .links_ a {
-    @apply font-medium hover:text-white hover:underline;
+    font-weight: 500;
+    transition: color 300ms ease-in-out, text-decoration 300ms ease-in-out;
   }
 
-  /* Fixed Discord icon styles - removed background */
+  .links_ a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+
   .discord {
     width: 9rem;
     height: 9rem;
-    background: transparent !important; /* Force transparent background */
+    background: transparent !important; 
     transition:
       rotate 500ms cubic-bezier(0.5, 0, 0.5, 1),
       scale 420ms cubic-bezier(0.5, 0.1, 0, 1),
@@ -347,12 +353,12 @@
     transition-delay: 240ms, 180ms, 20ms;
     transform: translateY(-25%);
     filter: drop-shadow(0px 0px 0px cyan) drop-shadow(0px 0px 0px blue);
-    color: white; /* Keep original white color */
+    color: white; 
   }
 
   .discord svg,
   .discord * {
-    background: transparent !important; /* Ensure all child elements have transparent background */
+    background: transparent !important; 
   }
 
   .discord:hover,
@@ -360,17 +366,35 @@
     transform: scale(1.2) rotate(360deg);
     filter: drop-shadow(4px 4px 14px rgba(15, 255, 239, 0.478)) drop-shadow(-4px -4px 12px purple);
     animation: bounce 0.7s infinite 180ms both;
-    background: transparent !important; /* Keep transparent on hover */
+    background: transparent !important; 
   }
 
   .discord:active {
     transform: scale(1);
     transition: scale 80ms;
-    background: transparent !important; /* Keep transparent on active */
+    background: transparent !important;
   }
 
   .quote {
-    @apply pointer-events-none absolute -top-6 left-1/2 min-w-max -translate-x-1/2 select-none rounded bg-slate-800/50 px-2 py-1 text-sm font-medium tracking-wide opacity-0 transition-opacity duration-150 group-hover:opacity-100;
+    pointer-events: none;
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    min-width: max-content;
+    transform: translateX(-50%);
+    user-select: none;
+    border-radius: 0.375rem;
+    background-color: rgba(30, 41, 59, 0.5);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  .group:hover .quote {
+    opacity: 1;
   }
 
   @keyframes bounce {
