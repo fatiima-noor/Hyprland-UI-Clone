@@ -3,14 +3,16 @@ import Hero from './components/LandingPage/Hero';
 import PreviewRiceSlice from './components/LandingPage/PreviewRiceSlice';
 import FeaturesSlice from './components/LandingPage/FeaturesSlice';
 import PluginsSlice from './components/LandingPage/PluginsSlice';
+import InstallSlice from './components/LandingPage/InstallSlice';
+import NewsSlice from './components/LandingPage/NewsSlice';
 import Footer from './components/Global/Footer';
 import { getHeroBackgroundTiles } from './utils/heroBackgroundData';
 
-// Mock news data (replace with actual API call if needed)
+// Mock news data (updated with slug and date for NewsThumb)
 const news = [
-  { id: 1, title: 'News 1', content: 'Placeholder news content' },
-  { id: 2, title: 'News 2', content: 'Placeholder news content' },
-  { id: 3, title: 'News 3', content: 'Placeholder news content' },
+  { id: 1, title: 'News 1', content: 'Placeholder news content', slug: 'news-1', date: '2025-07-01' },
+  { id: 2, title: 'News 2', content: 'Placeholder news content', slug: 'news-2', date: '2025-07-15' },
+  { id: 3, title: 'News 3', content: 'Placeholder news content', slug: 'news-3', date: '2025-07-29' },
 ];
 
 function App() {
@@ -28,8 +30,8 @@ function App() {
             <PluginsSlice />
             <section>HallOfFameSlice Placeholder</section>
             <section>Community Placeholder</section>
-            <section>NewsSlice Placeholder: {news.map((item) => item.title).join(', ')}</section>
-            <section>InstallSlice Placeholder</section>
+            <NewsSlice news={news} />
+            <InstallSlice />
           </div>
           <Footer />
         </div>

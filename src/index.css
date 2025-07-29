@@ -325,43 +325,34 @@
                      radial-gradient(closest-side, #0ea5e9, rgba(99, 102, 241, 0)); /* sky-500, indigo-500/0% */
     mask-image: radial-gradient(closest-side, white, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 90%, transparent);
   }
+
+  .links_ {
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+
+  .links_ a {
+    @apply font-medium hover:text-white hover:underline;
+  }
 }
 
 @keyframes pop {
-  0% {
-    scale: 0.98;
-  }
-  40% {
-    scale: 1.02;
-  }
-  100% {
-    scale: 1;
-  }
+  0% { scale: 0.98; }
+  40% { scale: 1.02; }
+  100% { scale: 1; }
 }
 
 @keyframes x {
-  0%, 16.667%, 100% {
-    opacity: 1;
-  }
-  33%, 83.333% {
-    opacity: 0;
-  }
+  0%, 16.667%, 100% { opacity: 1; }
+  33%, 83.333% { opacity: 0; }
 }
 
 @keyframes y {
-  0%, 16.667%, 66.667%, 100% {
-    opacity: 0;
-  }
-  33.333%, 50% {
-    opacity: 1;
-  }
+  0%, 16.667%, 66.667%, 100% { opacity: 0; }
+  33.333%, 50% { opacity: 1; }
 }
 
 @keyframes z {
-  0%, 50%, 100% {
-    opacity: 0;
-  }
-  66.667%, 83.333% {
-    opacity: 1;
-  }
+  0%, 50%, 100% { opacity: 0; }
+  66.667%, 83.333% { opacity: 1; }
 }
