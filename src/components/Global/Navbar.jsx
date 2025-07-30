@@ -1,55 +1,73 @@
+import React, { useState } from 'react';
+import { X, Menu, Github } from 'lucide-react';
 import HyprlandLogo from '../../assets/HyprlandLogo.png';
 
+
 function Navbar() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between rounded-full px-6 pt-2 text-sm duration-1000 animate-in fade-in-0 slide-in-from-top-1">
+    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between rounded-full px-6 pt-2 text-sm">
       <a
         href="/"
         className="flex items-center gap-4 rounded-full bg-black/50 px-4 py-2 font-bold tracking-wider text-white backdrop-blur"
       >
-        <img src={HyprlandLogo} alt="Hyprland Logo" className="h-8 w-6 object-contain" />
+        <img
+          src={HyprlandLogo}
+          alt="Hyprland Logo"
+          className="h-8 w-6 object-contain"
+        />
       </a>
 
+
       <button
-        className="z-50 rounded-full bg-black/50 p-2 backdrop-blur lg:hidden"
+        className="z-50 rounded-full bg-black/50 p-2 backdrop-blur lg:hidden text-slate-200"
+        onClick={toggleExpanded}
         aria-label="Open Navigation"
       >
-        <svg className="h-6 w-6 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
+        {isExpanded ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
       </button>
 
-      <nav className="nav">
-        <ul className="flex flex-col items-center gap-5 rounded-full lg:h-full lg:max-h-full lg:flex-row">
-          <li>
+      <nav className={`nav ${isExpanded ? 'flex' : 'hidden'} lg:flex`}>
+        <ul className="flex flex-col items-center gap-5 rounded-full lg:h-full lg:max-h-full lg:flex-row transition-colors hover:[&_li]:text-cyan-300">
+          <li className="transition-colors hover:text-cyan-300">
             <a href="https://wiki.hypr.land/Getting-Started/Master-Tutorial/" rel="noopener" target="_blank">
               Get started
             </a>
           </li>
-          <li>
+          <li className="transition-colors hover:text-cyan-300">
             <a href="https://wiki.hypr.land">Wiki</a>
           </li>
-          <li>
+          <li className="transition-colors hover:text-cyan-300">
             <a href="https://forum.hypr.land">Forums</a>
           </li>
-          <li>
+          <li className="transition-colors hover:text-cyan-300">
             <a href="https://account.hypr.land">Account</a>
           </li>
-          <li>
+          <li className="transition-colors hover:text-cyan-300">
             <a href="/hall_of_fame">Hall of fame</a>
           </li>
-          <li>
+          <li className="transition-colors hover:text-cyan-300">
             <a href="/news">News</a>
           </li>
-          <li>
+          <li className="transition-colors hover:text-cyan-300">
             <a href="/plugins">Plugins</a>
           </li>
         </ul>
+        
         <ul className="flex flex-row items-center gap-3 px-4">
           <li>
             <a
               href="https://discord.com/invite/hypeland"
-              className="social-icon"
+              className="social-icon block w-16 h-16 lg:w-8 lg:h-8 rounded-full p-1 transition-colors hover:bg-cyan-500 hover:text-white"
               aria-label="Join us on Discord"
               target="_blank"
             >
@@ -61,19 +79,17 @@ function Navbar() {
           <li>
             <a
               href="https://github.com/hyprwm/Hyprland"
-              className="social-icon"
+              className="social-icon block w-16 h-16 lg:w-8 lg:h-8 rounded-full p-1 transition-colors hover:bg-cyan-500 hover:text-white"
               aria-label="Go to Hyprlands Github"
               target="_blank"
             >
-              <svg className="h-full w-full" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-              </svg>
+              <Github className="h-full w-full" />
             </a>
           </li>
           <li>
             <a
               href="https://forgejo.org"
-              className="social-icon"
+              className="social-icon block w-16 h-16 lg:w-8 lg:h-8 rounded-full p-1 transition-colors hover:bg-cyan-500 hover:text-white"
               aria-label="Hyprland git instance"
               target="_blank"
             >
@@ -83,10 +99,11 @@ function Navbar() {
             </a>
           </li>
         </ul>
+
         <ul className="flex gap-4">
           <li>
             <a
-              className="rounded-full px-4 py-2 outline outline-cyan-500 hover:outline-cyan-200"
+              className="rounded-full px-4 py-2 outline outline-cyan-500 hover:outline-cyan-200 text-white"
               href="/support"
             >
               Donate
@@ -104,6 +121,37 @@ function Navbar() {
           </li>
         </ul>
       </nav>
+
+      <style jsx>{`
+        .nav {
+          font-weight: 600;
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          inset: 0 0 0 0;
+          background: rgba(0, 0, 0, 0.6);
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          backdrop-filter: blur(12px);
+          padding: 5rem 2rem;
+        }
+
+        @media (min-width: 1024px) {
+          .nav {
+            position: relative;
+            height: min-content;
+            width: max-content;
+            flex-direction: row;
+            border-radius: 9999px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.5rem;
+            padding-left: 1.25rem;
+            padding-right: 0.75rem;
+            outline: 1px solid rgba(34, 197, 94, 0.1);
+          }
+        }
+      `}</style>
     </header>
   );
 }
